@@ -1,0 +1,149 @@
+<!-- user-registration.component.html -->
+<div class="container">
+  <div class="card mb-4">
+    <div class="card-header">User Registration</div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <!-- Full Name -->
+        <div class="form-group row mb-2">
+          <label for="fullName" class="col-md-2 col-form-label"
+            >Full Name</label
+          >
+          <div class="col-md-8">
+            <input
+              type="text"
+              formControlName="fullName"
+              class="form-control"
+              id="fullName"
+              placeholder="Full Name (required)"
+              name="fullName"
+              [ngClass]="{
+                'is-invalid':
+                  (fullName?.touched || fullName?.dirty) && fullName?.invalid
+              }"
+            />
+
+            <span class="invalid-feedback">
+              @if(fullName?.errors?.['required']){
+              <span>Full Name is required</span>
+              } @if(fullName?.errors?.['minlength']){
+              <span>Full Name must be at least 5 characters</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group row mb-2">
+          <label for="email" class="col-md-2 col-form-label">Email</label>
+          <div class="col-md-8">
+            <input
+              type="email"
+              formControlName="email"
+              class="form-control"
+              id="email"
+              placeholder="Email (required)"
+              name="email"
+              [ngClass]="{
+                'is-invalid': (email?.touched || email?.dirty) && email?.invalid
+              }"
+            />
+            <span class="invalid-feedback">
+              @if(email?.errors?.['required']){
+              <span>Email is required</span>
+              } @if(email?.errors?.['email']){
+              <span>Email must be Valid format</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <!-- Mobile Numbers -->
+        <div formArrayName="mobile" class="form-group row mb-2">
+          @for(control of mobile.controls;track $index){
+          <div [formGroupName]="$index">
+            <label class="col-md-2 col-form-label"
+              >Mobile Number {{ $index + 1 }}</label
+            >
+            <div class="col-md-8">
+              <div class="input-group">
+                <input
+                  type="text"
+                  formControlName="mobile"
+                  class="form-control"
+                  placeholder="Mobile Number (required)"
+                />
+                <div class="input-group-append">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="addMobileNumber()"
+                  >
+                    Add Another
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="removeMobileNumber($index)"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+              <!-- Add validation span for mobile number -->
+            </div>
+          </div>
+
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="form-group row mb-2">
+          <label for="password" class="col-md-2 col-form-label">Password</label>
+          <div class="col-md-8">
+            <input
+              type="password"
+              formControlName="password"
+              class="form-control"
+              id="password"
+              placeholder="Password (required)"
+              name="password"
+              [ngClass]="{
+                'is-invalid':
+                  (password?.touched || password?.dirty) && password?.invalid
+              }"
+            />
+            @if(password?.errors?.['required']){
+            <span>Password is required</span>
+            } @if(password?.errors?.['minlength']){
+            <span>Password must be at least 6 letters</span>
+            }
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group row mb-2">
+          <label for="confirmPassword" class="col-md-2 col-form-label"
+            >Confirm Password</label
+          >
+          <div class="col-md-8">
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              class="form-control"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+            />
+            <!-- Add similar validation span for confirm password -->
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Display Form Values -->
+<h2>{{ userForm.value | json }}</h2>

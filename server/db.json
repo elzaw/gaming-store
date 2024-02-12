@@ -1,0 +1,176 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "Name": "Electronics"
+    },
+    {
+      "id": "2",
+      "Name": "Clothing"
+    },
+    {
+      "id": "3",
+      "Name": "Books"
+    },
+    {
+      "id": "4",
+      "Name": "Accessories"
+    },
+    {
+      "id": "5",
+      "Name": "Fitness"
+    },
+    {
+      "id": "6",
+      "Name": "Appliances"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "The Amazing Spiderman",
+      "quantity": 10,
+      "price": 50,
+      "img": "../../../assets/2.jpg",
+      "category_id": 1,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "The Amazing Spiderman",
+      "quantity": 5,
+      "price": 30,
+      "img": "../../../assets/3.jpg",
+      "category_id": 2,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "The Witcher 3",
+      "quantity": 30,
+      "price": 15,
+      "img": "../../../assets/4.jpg",
+      "category_id": 3,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "Mortal Compact",
+      "quantity": 15,
+      "price": 800,
+      "img": "../../../assets/game.jpg",
+      "category_id": 1,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "name": "Mortal Compact",
+      "quantity": 8,
+      "price": 70,
+      "img": "../../../assets/5.jpg",
+      "category_id": 1,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "Mortal Compact",
+      "quantity": 20,
+      "price": 45,
+      "img": "../../../assets/6.jpg",
+      "category_id": 2,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "Assassin's Creed Revelation",
+      "quantity": 12,
+      "price": 120,
+      "img": "../../../assets/7.jpg",
+      "category_id": 1,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "Assassin's Creed Rouge",
+      "quantity": 7,
+      "price": 1200,
+      "img": "../../../assets/8.jpg",
+      "category_id": 1,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "name": "Assassin's creed black flag IV",
+      "quantity": 25,
+      "price": 35,
+      "img": "../../../assets/9.jpg",
+      "category_id": 4,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "name": "Fitness Tracker",
+      "quantity": 18,
+      "price": 80,
+      "img": "../../../assets/10.jpg",
+      "": 5,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "name": "Call Of Duty modern warfare",
+      "quantity": 15,
+      "price": 50,
+      "img": "../../../assets/11.jpg",
+      "category_id": 4,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "name": "Call Of Duty black ops 3",
+      "quantity": 8,
+      "price": 90,
+      "img": "../../../assets/12.jpg",
+      "category_id": 6,
+      "purchaseDate": "2024-01-25T00:00:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "d7af",
+      "fullName": "John Doe",
+      "email": "asd@asd.com",
+      "mobile": [
+        {
+          "mobile": "1234567890"
+        }
+      ],
+      "password": "password123",
+      "confirmPassword": "password123"
+    },
+    {
+      "id": "cfaa",
+      "fullName": "John Doe",
+      "email": "asd@asd.com",
+      "mobile": [
+        {
+          "mobile": "1234567890"
+        }
+      ],
+      "password": "password123",
+      "confirmPassword": "password123"
+    },
+    {
+      "id": "734c",
+      "fullName": "John Doe",
+      "email": "asd@asd.com",
+      "mobile": [
+        {
+          "mobile": "1234567890"
+        }
+      ],
+      "password": "password123",
+      "confirmPassword": "password123"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!-- <app-header></app-header> -->
+
+<!-- <label for="category"> Select Category:</label>
+<select id="category" name="category" [(ngModel)]="selectedCategory">
+  <option>All</option>
+  @for (category of productCategories; track category) {
+  <option [value]="category">
+    {{ category }}
+  </option>
+  }
+
+</select> -->
+<app-header></app-header>
+
+<br />
+<h1>Parent</h1>
+
+<div>
+  <label for="filterByPrice">Filter By Price </label>
+  <input
+    type="text"
+    class="form-control"
+    id="filterByPrice"
+    name="filterByPrice"
+    [(ngModel)]="parentValue"
+  />
+</div>
+<br />
+
+<!-- child -->
+<app-products [childValue]="parentValue" (addPrdsEvent)="addFunc($event)">
+</app-products>
+<!-- <app-products [listFilterValueInchild]="listFilterValue" (addPrdsEvent)="addFunc($event)"></app-products> -->
+
+<caption>
+  Cart
+</caption>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(item of cart;track item){
+    <tr>
+      <!-- <h4>Purchase Date: {{ item.purchaseDate | date : "short" }}</h4>
+      <p>
+        Total Price:
+        {{ item.price | currency : "USD" : "symbol" }}
+      </p> -->
+
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.product.price | currency }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.totalPrice | currency }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="removeFromCart(item)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    }
+    <tr></tr>
+  </tbody>
+</table>

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">
+          <i class="fa-solid fa-house fa-sm"></i> Home</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
+          >Products</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/observer']"
+          routerLinkActive="active"
+          >obs & op</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/addStatic']"
+          routerLinkActive="active"
+          >Add static</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/form']" routerLinkActive="active"
+          >Add Form</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/register']"
+          routerLinkActive="active"
+          >Register</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active"
+          >Login</a
+        >
+      </li>
+    </ul>
+  </div>
+  <a
+    class="btn btn-warning m-3"
+    href="#"
+    role="button"
+    (click)="logout()"
+    [hidden]="!isLoggedIn"
+  >
+    LogOut
+  </a>
+  <img
+    src="../../../assets/logo.jpeg"
+    width="50"
+    style="border-radius: 50%"
+    class="image-fluid"
+    alt=""
+  />
+</nav>

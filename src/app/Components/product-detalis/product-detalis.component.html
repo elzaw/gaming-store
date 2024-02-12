@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  @if(product){
+  <div class="row mb-3 mt-3">
+    <div class="col-md-6">
+      <h4>
+        @switch (product.quantity) { @case (0) {Out Of Stock } @case (1)
+        {LastOne Item} @case (2) {Last Two Item} @default {In Stock} }
+      </h4>
+      <img [src]="product.img" class="card img-fluid img-thumbnail" />
+    </div>
+    <div class="col-md-6 mt-3">
+      <h1>{{ product.name }}</h1>
+      <h2>Price: {{ product.price | currency }}</h2>
+      <!-- <h3>{{ category.Name }}</h3> -->
+    </div>
+  </div>
+  }
+  <button type="button" class="btn btn-dark" [routerLink]="['/home']">
+    Back
+  </button>
+
+  <div
+    class="d-flex justify-content-center"
+    role="group"
+    aria-label="Basic example"
+  >
+    <button
+      class="border-0"
+      (click)="prevProduct()"
+      [disabled]="productID == productIdList[0]"
+    >
+      <i class="fa-solid fa-angles-left fs-4 text-primary"></i>
+    </button>
+    <button
+      class="border-0"
+      (click)="nextProduct()"
+      [disabled]="productID == productIdList[productIdList.length - 1]"
+    >
+      <i class="fa-solid fa-angles-right fs-4"></i>
+    </button>
+  </div>
+</div>
+
+<!-- <button class="btn btn-dark" (click)="test()">Back</button> -->

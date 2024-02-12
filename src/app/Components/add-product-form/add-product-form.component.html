@@ -1,0 +1,262 @@
+<!-- <div class="container">
+  <div class="card mb-4">
+    <div class="card-header">Add Product with Reactive Form</div>
+    <div class="card-body">
+      <form [formGroup]="formGroup1" (ngSubmit)="addProduct(formGroup1.value)">
+        <div class="form-group row mb-2">
+          <label for="productName" class="col-md-2 col-form-label"
+            >Product Name</label
+          >
+          <div class="col-md-8">
+            <input
+              type="text"
+              formControlName="productName"
+              class="form-control"
+              id="productName"
+              placeholder="Product Name (required)"
+              name="productName"
+              [ngClass]="{
+                'is-invalid':
+                  (productName?.touched || productName?.dirty) &&
+                  productName?.invalid
+              }"
+            />
+            <span class="invalid-feedback">
+              @if(productName?.errors?.['required']){
+              <span>Product Name is required</span>
+              } @if(productName?.errors?.['minlength']){
+              <span>Product Name must be at least 3 characters</span>
+              }
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="price">Price</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="price"
+              type="number"
+              name="price"
+              formControlName="price"
+              placeholder="Price (required)"
+              [ngClass]="{
+                'is-invalid': (price?.touched || price?.dirty) && price?.invalid
+              }"
+            />
+            <span class="invalid-feedback">
+              @if(price?.errors?.['required']){
+              <span>Price is required</span>
+              } @if(price?.errors?.['min']){
+              <span>Price must be a positive number</span>
+              }
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="quantity">Quantity</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="quantity"
+              type="number"
+              name="quantity"
+              formControlName="quantity"
+              placeholder="Quantity (required)"
+              [ngClass]="{
+                'is-invalid':
+                  (quantity?.touched || quantity?.dirty) && quantity?.invalid
+              }"
+            />
+            <span class="invalid-feedback">
+              @if(quantity?.errors?.['required']){
+              <span>Quantity is required</span>
+              } @if(quantity?.errors?.['min']){
+              <span>Quantity must be a positive number</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="category">Category</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="category"
+              type="text"
+              name="category"
+              formControlName="category"
+              placeholder="Category (required)"
+              [ngClass]="{
+                'is-invalid':
+                  (category?.touched || category?.dirty) && category?.invalid
+              }"
+            />
+            <span class="invalid-feedback">
+              @if(category?.errors?.['required']){
+              <span>Category is required</span>
+              } @if(category?.errors?.['minlength']){
+              <span>Category must be at least 3 characters</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <br />
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="formGroup1.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<h2>{{ formGroup1.value | json }}</h2>
+<h2>{{ price?.errors | json }}</h2> -->
+
+<!-- <h2>{{ templateForm.value | json }}</h2> -->
+
+<div class="container">
+  <div class="card mb-4">
+    <div class="card-header">Add Product with Template</div>
+    <div class="card-body">
+      <form #formAddProduct="ngForm" (ngSubmit)="addProduct()">
+        <div class="form-group row mb-2">
+          <label for="productName" class="col-md-2 col-form-label"
+            >Product Name</label
+          >
+          <div class="col-md-8">
+            <input
+              type="text"
+              name="productName"
+              class="form-control"
+              id="productName"
+              placeholder="Product Name (required)"
+              required
+              minlength="3"
+              [(ngModel)]="product.name"
+              #productNameInput="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (productNameInput.touched || productNameInput.dirty) &&
+                  productNameInput.invalid
+              }"
+            />
+
+            <span class="invalid-feedback">
+              @if(productNameInput.errors?.['required']){
+              <span>Product name is required</span>
+              } @if(productNameInput.errors?.['minlength']){
+              <span>Product name must be at least 3</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="price">Price</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="price"
+              type="number"
+              placeholder="Price (required)"
+              required
+              min="0"
+              name="price"
+              [(ngModel)]="product.price"
+              #priceInput="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (priceInput.touched || priceInput.dirty) && priceInput.invalid
+              }"
+            />
+
+            <span class="invalid-feedback">
+              @if(priceInput.errors?.['required']){
+              <span>Price is required</span>
+              } @if(priceInput.errors?.['min']){
+              <span>Price must be positive</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="quantity">Quantity</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="quantity"
+              type="number"
+              placeholder="Quantity (required)"
+              required
+              min="0"
+              name="quantity"
+              [(ngModel)]="product.quantity"
+              #quantityInput="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (quantityInput.touched || quantityInput.dirty) &&
+                  quantityInput.invalid
+              }"
+            />
+
+            <span class="invalid-feedback">
+              @if(quantityInput.errors?.['required']){
+              <span>Quantity is required</span>
+              } @if(quantityInput.errors?.['min']){
+              <span>Quantity must be positive</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <!-- <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="category">Category</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="category"
+              type="text"
+              placeholder="Category (required)"
+              required
+              minlength="3"
+              name="category"
+              [(ngModel)]="product.category"
+              #categoryInput="ngModel"
+              [ngClass]="{
+                'is-invalid':
+                  (categoryInput.touched || categoryInput.dirty) &&
+                  categoryInput.invalid
+              }"
+            />
+
+            <span class="invalid-feedback">
+              @if(category?.errors?.['required']){
+              <span>Category is required</span>
+              } @if(category?.errors?.['minlength']){
+              <span>Category must be at least 3</span>
+              }
+            </span>
+          </div>
+        </div> -->
+
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="formAddProduct.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<h1>{{ formAddProduct.value | json }}</h1>

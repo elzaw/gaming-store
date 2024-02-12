@@ -1,0 +1,25 @@
+@font-face {
+  font-family: GreatVibes;
+  src: url("/static_files/fonts/gv.ttf");
+}
+
+.greatVibesFont {
+  font-family: GreatVibes;
+}
+
+
+
+@media screen and (max-width: 956px) {
+  .navbar-brand img {
+    width: 100%;
+    max-width: 240px;
+    position: relative;
+  }
+}
+
+img.consize {
+  transform: translateY(-20px) scale(0.25);
+}
+#mainNav {
+  transition: background 300ms linear;
+}

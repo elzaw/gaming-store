@@ -1,0 +1,125 @@
+@if (!IsPurchased) {
+<img
+  [src]="store.logo"
+  width="40"
+  style="border-radius: 50%"
+  class="img-fluid"
+  alt="{{ store.name }} Logo"
+/>
+} @else if(discount !=='No Discount') {
+<h3>We offer an explicit discount of: {{ discount }}</h3>
+}
+
+<button (click)="togglePurchase()" class="btn btn-info m-2">Buy</button>
+
+<label for="category"> Select Category:</label>
+<select id="category" name="category" [(ngModel)]="selectedCategory">
+  <option value="-1">All</option>
+  @for (category of categoryList; track category.ID) {
+
+  <option [value]="category.ID">
+    {{ category.Name }}
+  </option>
+  }
+</select>
+<br />
+<br />
+<br />
+
+@if (IsPurchased) {
+<div>
+  <div>Thanks for purchasing from {{ store.name }}!</div>
+</div>
+}
+
+<div class="container">
+  <div class="row">
+    @for (product of productsList; track product.id ){
+    @if(product.category_id==selectedCategory||selectedCategory==-1) {
+
+    <div class="col-md-4 mb-3">
+      <div class="card" ProductCard>
+        <img
+          [src]="product.img"
+          class="card-img-top"
+          alt=""
+          (click)="showDetails(product.id)"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <h6 class="card-title">{{ product.price | currency }}</h6>
+
+          <p class="card-text">Quantity: {{ product.quantity }}</p>
+          <p class="card-text">date: {{ product.purchaseDate | date }}</p>
+
+          @if(product.quantity === 0){
+          <div class="out-of-stock">Out of Stock</div>
+          }
+          <button
+            (click)="buyProduct(product)"
+            (click)="addToCart(product)"
+            [disabled]="product.quantity === 0"
+            class="btn btn-primary"
+          >
+            Add To Cart
+          </button>
+
+          <button
+            (click)="deleteProduct(product.id)"
+            class="btn btn-danger m-3"
+          >
+            Delete
+          </button>
+
+          <button (click)="showUpdate()" class="btn btn-info m-2">
+            Show Update
+          </button>
+          @if(showUpdateFormFlag){
+          <form
+            (ngSubmit)="updateProduct(product.id, product)"
+            #updateForm="ngForm"
+          >
+            <button
+              (click)="(updatedProduct)"
+              class="btn btn-warning m-2"
+              type="submit"
+            >
+              Update
+            </button>
+            <div class="form-group">
+              <label for="productName">Product Name:</label>
+              <input
+                type="text"
+                id="productName"
+                name="productName"
+                [(ngModel)]="product.name"
+                class="form-control"
+                required
+                #productName
+              />
+            </div>
+            <div class="form-group">
+              <label for="productPrice">Product Price:</label>
+              <input
+                type="number"
+                id="productPrice"
+                name="productPrice"
+                [(ngModel)]="product.price"
+                class="form-control"
+                required
+                #productPrice
+              />
+            </div>
+          </form>
+          }
+        </div>
+      </div>
+    </div>
+
+    } }
+    <h1>
+      Credit Card Number:
+      {{ "1234567812345678" | creditCardFormat }}
+    </h1>
+  </div>
+</div>
